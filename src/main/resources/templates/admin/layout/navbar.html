@@ -1,0 +1,52 @@
+<nav th:fragment="admin_navbar"
+     class="navbar navbar-expand-lg navbar-dark bg-primary shadow fixed-top admin-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/admin">ADMIN PANEL</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#adminNavbar" aria-controls="adminNavbar"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="adminNavbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">На главную</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/requests">Заявки</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/appointments">Записи на прием</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/services">Услуги</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/news">Новости</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/users">Пользователи</a>
+                </li>
+
+                <li class="nav-item ms-3">
+                    <a class="btn btn-outline-light px-3" href="/logout">Выйти</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

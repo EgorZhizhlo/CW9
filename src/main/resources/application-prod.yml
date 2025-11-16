@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://rehub_db:5432/rehub
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: false
+  thymeleaf:
+    cache: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    root: INFO
+
+jwt:
+  secret: "superSecretRehubKeyForJwtGeneration"
+  expiration: 3600000

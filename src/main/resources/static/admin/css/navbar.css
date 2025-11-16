@@ -1,0 +1,17 @@
+.admin-navbar {
+    background: #0d6efd !important;
+}
+
+.admin-navbar .navbar-brand {
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    color: #e2e2e2 !important;
+    margin-left: 15px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.nav-link:hover {
+    color: #ffffff !important;
+}

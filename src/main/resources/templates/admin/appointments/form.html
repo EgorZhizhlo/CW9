@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Запись — Admin ReHub</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/admin/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/static/admin/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/static/admin/css/admin.css}">
+</head>
+
+<body>
+
+<div th:replace="admin/layout/navbar :: admin_navbar"></div>
+
+<div class="content-wrapper">
+    <div class="container py-5">
+
+        <h3 class="fw-bold mb-4">
+            <span th:text="${appointment.id != null ? 'Редактирование записи' : 'Создание записи'}"></span>
+        </h3>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <form th:action="${action}" method="post">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Пациент</label>
+                            <select class="form-select" name="userId" required>
+                                <option th:each="u : ${users}"
+                                        th:value="${u.id}"
+                                        th:selected="${appointment.user != null and u.id == appointment.user.id}"
+                                        th:text="${u.fullName != null ? u.fullName : u.username}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Врач</label>
+                            <select class="form-select" name="doctorId" required>
+                                <option th:each="d : ${doctors}"
+                                        th:value="${d.id}"
+                                        th:selected="${appointment.doctor != null and d.id == appointment.doctor.id}"
+                                        th:text="${d.fullName != null ? d.fullName : d.username}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Дата и время</label>
+                        <input type="datetime-local"
+                               name="appointmentDateTime"
+                               class="form-control"
+                               th:value="${appointment.appointmentDateTime != null ?
+                                        appointment.appointmentDateTime.toString().replace(' ', 'T') : ''}"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Сообщение</label>
+                        <textarea name="message" rows="3" class="form-control"
+                                  th:text="${appointment.message}"></textarea>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary">Сохранить</button>
+                        <a class="btn btn-secondary" href="/admin/appointments">Отмена</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="admin/layout/footer :: admin_footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

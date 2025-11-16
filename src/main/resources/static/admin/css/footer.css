@@ -1,0 +1,12 @@
+.admin-footer {
+    font-size: 14px;
+    border-top: 1px solid #333;
+    color: #bbb;
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

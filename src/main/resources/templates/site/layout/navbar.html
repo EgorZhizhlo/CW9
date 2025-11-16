@@ -1,0 +1,71 @@
+<nav th:fragment="navbar"
+     class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top site-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">ReHub Center</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#siteNavbar" aria-controls="siteNavbar"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="siteNavbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">Об авторе</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/services">Услуги</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/specialists">Специалисты</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">Новости</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Контакты</a>
+                </li>
+
+                <!-- USER -->
+                <li class="nav-item" sec:authorize="hasRole('USER')">
+                    <a class="nav-link" href="/my/appointments">Мои записи</a>
+                </li>
+
+                <!-- DOCTOR -->
+                <li class="nav-item" sec:authorize="hasRole('DOCTOR')">
+                    <a class="nav-link" href="/doctor/patients">Мои пациенты</a>
+                </li>
+
+                <!-- ADMIN -->
+                <li class="nav-item ms-3" sec:authorize="hasRole('ADMIN')">
+                    <a class="btn btn-primary px-3" href="/admin">Админ панель</a>
+                </li>
+
+                <!-- Вход (когда НЕ авторизован) -->
+                <li class="nav-item ms-3" sec:authorize="isAnonymous()">
+                    <a class="btn btn-outline-primary px-3" href="/login">Войти</a>
+                </li>
+
+                <!-- Выход (когда авторизован) -->
+                <li class="nav-item ms-3" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <button class="btn btn-danger px-3" type="submit">Выйти</button>
+                    </form>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
