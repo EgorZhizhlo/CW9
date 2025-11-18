@@ -30,7 +30,7 @@ public class SecurityConfig {
                         // публичная часть
                         .requestMatchers(
                                 "/", "/services", "/specialists",
-                                "/news", "/news/**",
+                                "/news", "/news/**", "/about",
                                 "/contact", "/request",
                                 "/css/**", "/js/**", "/images/**", "/static/**",
                                 "/favicon.ico"
